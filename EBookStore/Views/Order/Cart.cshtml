@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EBookStore.Models.BookDataModel>
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<h2>Cart</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isbn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isbn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.publisher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Checkout", "Checkout", "Order", null, new { @class = "form-control btn btn-success" })
+</div>

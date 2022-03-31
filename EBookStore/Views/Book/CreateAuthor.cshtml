@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Create Author";
+}
+
+<h2 style="margin-bottom:30px">Create Author</h2>
+
+<form method="POST">
+    <div class="row form-group">
+        <div class="col-2">Author Name: </div>
+        <div class="col-4">
+            <input type="text" class="form-control" name="author" />
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-2"></div>
+        <div class="col-4">
+            <input type="submit" class="form-control" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <h2>Authors List</h2>
+    <table class="author-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        @{
+            if (Model != null)
+            {
+                foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.id</td>
+                        <td>@data.name</td>
+
+                        <td>
+                            @using (@Html.BeginForm("DeleteAuthor", "Book", new { authorId = @data.id }))
+                            {
+                                <input type="submit" class="btn btn-danger" value="Delete" />
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </table>
+</div>

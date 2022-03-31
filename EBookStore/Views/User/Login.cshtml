@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "User Login Page";
+}
+
+<h2 style="margin-bottom:30px">User Login</h2>
+
+<form method="POST">
+    <div class="row form-group">
+        <div class="col-2">Username: </div>
+        <div class="col-4">
+            <input type="text" class="form-control" name="username" />
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-2">Password: </div>
+        <div class="col-4">
+            <input type="text" class="form-control" name="password" />
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-2"></div>
+        <div class="col-4">
+            <input type="hidden" name="user_type" value="CUSTOMER" />
+            <input type="submit" class="form-control" />
+        </div>
+    </div>
+</form>

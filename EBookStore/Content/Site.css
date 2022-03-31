@@ -22,3 +22,11 @@ select,
 textarea {
     max-width: 280px;
 }
+
+table {
+    
+}
+table th, table td {
+    padding: 5px 10px !important;
+    border: 1px solid #000 !important;
+}

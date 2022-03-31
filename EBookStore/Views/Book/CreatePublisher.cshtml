@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "CreatePublisher";
+}
+
+<h2 style="margin-bottom:30px">Create Publisher</h2>
+
+<form method="POST">
+    <div class="row form-group">
+        <div class="col-2">Publisher Name: </div>
+        <div class="col-4">
+            <input type="text" class="form-control" name="publisher" />
+        </div>
+    </div>
+    <div class="row form-group">
+        <div class="col-2"></div>
+        <div class="col-4">
+            <input type="submit" class="form-control" />
+        </div>
+    </div>
+</form>
+
+<div>
+    <h2>Publishers List</h2>
+    <table class="genere-table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        @{
+            if (Model != null)
+            {
+                foreach (var data in Model)
+                {
+                    <tr>
+                        <td>@data.id</td>
+                        <td>@data.name</td>
+
+                        <td>
+                            @using (@Html.BeginForm("DeletePublisher", "Book", new { publisherId = @data.id }))
+                            {
+                                <input type="submit" class="btn btn-danger" value="Delete" />
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        }
+    </table>
+</div>

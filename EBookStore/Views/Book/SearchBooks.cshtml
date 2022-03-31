@@ -1,0 +1,71 @@
+﻿@model IEnumerable<EBookStore.Models.BookDataModel>
+
+@{
+    ViewBag.Title = "SearchBooks";
+}
+
+<h2>SearchBooks</h2>
+
+<p>
+    @Html.ActionLink("Create New", "CreateBook")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isbn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.publisher)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.stock)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isbn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.publisher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.stock)
+        </td>
+        <td>
+            @using (@Html.BeginForm("CreateOrder", "Order", new { bookId = item.id }))
+            {
+                <input type="submit" class="btn btn-danger" value="Order" />
+            } |
+            @Html.ActionLink("Delete", "Delete", new { id = item.id })
+        </td>
+    </tr>
+}
+
+</table>
