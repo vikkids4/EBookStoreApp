@@ -70,6 +70,7 @@ namespace EBookStore.Controllers
                 if (reader.Read())
                 {
                     Console.WriteLine("Login success!");
+                    Response.Write("<script>alert('login successful');</script>");
                     System.Diagnostics.Debug.WriteLine("Login Success");
                     Session["uid"] = reader["id"];
                     Session["uname"] = username;
@@ -78,6 +79,7 @@ namespace EBookStore.Controllers
                 else
                 {
                     Console.WriteLine("Login Failed!");
+                    Response.Write("<script>alert('login failed');</script>");
                 }
                 conn.Close();
                 return View();
@@ -85,7 +87,7 @@ namespace EBookStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult Logout(string username, string password)
+        public ActionResult Logout()
         {
             if (Session["uname"] != null)
             {
